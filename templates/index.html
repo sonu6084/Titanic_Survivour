@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html >
+
+<head>
+  <meta charset="UTF-8">
+  <title>Predictors</title>
+  <link href='https://fonts.googleapis.com/css?family=Pacifico' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Arimo' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Hind:300' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300' rel='stylesheet' type='text/css'>
+<link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+  
+</head>
+
+<body>
+ <div class="login">
+	<h1>Titanic Survivor</h1>
+
+     <!-- Main Input For Receiving Query to our ML -->
+    <form action="{{ url_for('predict')}}"method="post">
+    	<input type="text" name="Pclass" placeholder="Ticket Class" required="required" />
+      <input type="text" name="Age" placeholder="Age" required="required" />
+      <input type="text" name="SibSp" placeholder="Siblings/Spouses" required="required" />
+      <input type="text" name="Parch" placeholder="Parent/Children" required="required" />
+      <input type="text" name="Fare" placeholder="Fare" required="required" />
+      <input type="text" name="Gender" placeholder="Gender" required="required" />
+      <input type="text" name="Embarked" placeholder="Port of Embarkation" required="required" />
+
+        
+
+        <button type="submit" class="btn btn-primary btn-block btn-large">Predict</button>
+    </form>
+
+   <br>
+   <br>
+   
+   {% autoescape false %}
+    {{ prediction_text }}
+   {% endautoescape %}
+
+ </div>
+
+
+</body>
+</html>
